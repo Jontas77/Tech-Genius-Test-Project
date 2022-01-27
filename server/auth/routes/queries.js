@@ -1,26 +1,41 @@
 // Employee queries
-const checkEmployeeEmail = "SELECT * FROM employees WHERE email = $1";
+const checkEmployeeEmail = "SELECT * FROM employees WHERE employee_email = $1";
 
-const getEmployeeById = "SELECT first_name FROM employees WHERE id = $1";
+const createEmployee =
+  "INSERT INTO employees (first_name, last_name, telephone_number, manager, employee_status, employee_email, employee_password) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
+
+const getEmployeeById =
+  "SELECT first_name FROM employees WHERE employee_id = $1";
 
 // Manager queries
-const checkManagerEmail = "SELECT * FROM managers WHERE email = $1";
+const checkManagerEmail = "SELECT * FROM managers WHERE manager_email = $1";
 
-const getManagerById = "SELECT manager_name FROM managers WHERE id = $1";
+const checkIfManager =
+  "SELECT first_name, last_name, employee_email, employee_password FROM employees WHERE manager = $1";
+
+const createManager =
+  "INSERT INTO managers ( manager_name, manager_email, manager_password) VALUES ($1, $2, $3) RETURNING *";
+
+const getManagerById =
+  "SELECT manager_name FROM managers WHERE manager_id = $1";
 
 // Admin queries
-const checkAdminEmail = "SELECT * FROM hr_admin WHERE email = $1";
+const checkAdminEmail = "SELECT * FROM admin WHERE admin_email = $1";
 
-// const registerAdmin = "INSERT INTO admins (admin_name, admin_email, admin_password) VALUES ($1, $2, $3) RETURNING *";
+const signUpAdmin =
+  "INSERT INTO admin (admin_name, admin_email, admin_password) VALUES ($1, $2, $3) RETURNING *";
 
-const getAdminById = "SELECT admin_name FROM hr_admin WHERE id = $1";
+const getAdminById = "SELECT admin_name FROM admin WHERE admin_id = $1";
 
 module.exports = {
   checkEmployeeEmail,
+  createEmployee,
   getEmployeeById,
   checkManagerEmail,
+  checkIfManager,
+  createManager,
   getManagerById,
   checkAdminEmail,
-  // registerAdmin,
+  signUpAdmin,
   getAdminById,
 };
