@@ -2,8 +2,8 @@ module.exports = (req, res, next) => {
   const {
     employee_email,
     employee_password,
-    manager_email,
-    manager_password,
+    // manager_email,
+    // manager_password,
     admin_email,
     admin_password,
   } = req.body;
@@ -21,9 +21,9 @@ module.exports = (req, res, next) => {
   }
 
   if (req.path === "/manager/login") {
-    if (![manager_email, manager_password].every(Boolean)) {
+    if (![employee_email, employee_password].every(Boolean)) {
       return res.status(401).json("Missing Credentials");
-    } else if (!validEmail(manager_email)) {
+    } else if (!validEmail(employee_email)) {
       return res.status(401).json("Invalid Email");
     }
   }

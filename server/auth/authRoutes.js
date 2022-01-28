@@ -18,7 +18,7 @@ router.get("/employee/is-verify", authorize, employeeAuth.verifyEmployee);
 router.get("/employee/dashboard", authorize, employeeAuth.getEmployeeDashboard);
 
 // Manager
-router.post("/manager/create", validate, managerAuth.createManager);
+
 router.post("/manager/login", validate, managerAuth.loginManager);
 router.get("/manager/is-verify", authorize, managerAuth.verifyManager);
 router.get("/manager/dashboard", authorize, managerAuth.getManagerDashboard);

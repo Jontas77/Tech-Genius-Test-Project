@@ -10,14 +10,13 @@ const getEmployeeById =
 // Manager queries
 const checkManagerEmail = "SELECT * FROM managers WHERE manager_email = $1";
 
-const checkIfManager =
-  "SELECT first_name, last_name, employee_email, employee_password FROM employees WHERE manager = $1";
+const checkIfManager = "SELECT * FROM employees WHERE manager = $1";
 
 const createManager =
-  "INSERT INTO managers ( manager_name, manager_email, manager_password) VALUES ($1, $2, $3) RETURNING *";
+  "INSERT INTO managers ( manager_name, manager_email, manager_password, employee_id) VALUES ($1, $2, $3, $4) RETURNING *";
 
 const getManagerById =
-  "SELECT manager_name FROM managers WHERE manager_id = $1";
+  "SELECT first_name FROM employees WHERE employee_id = $1";
 
 // Admin queries
 const checkAdminEmail = "SELECT * FROM admin WHERE admin_email = $1";
