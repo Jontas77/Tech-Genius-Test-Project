@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => res.send("Welcome"));
 
 // Routes //
-app.use("/api", require("./api"));
+app.use("/api", require("./apiRoutes"));
 
 //login
 app.use("/auth", require("./auth/authRoutes"));
