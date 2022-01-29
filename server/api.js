@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const queries = require("./apiQueries");
-const authorise = require("./auth/jwt/authorize");
+const authorize = require("./auth/jwt/authorize");
 const pool = require("./db");
 
 /*
@@ -11,7 +11,7 @@ const pool = require("./db");
 
 // Employees
 // View employees
-router.get("/employees", authorise, async (req, res) => {
+router.get("/employees", authorize, async (req, res) => {
   try {
     const getEmployees = await pool.query(queries.getEmployees);
     res.json(getEmployees.rows);
@@ -21,7 +21,7 @@ router.get("/employees", authorise, async (req, res) => {
 });
 
 // Get single employee
-router.get("/employees/:employeeId", authorise, async (req, res) => {
+router.get("/employees/:employeeId", authorize, async (req, res) => {
   try {
     const { employeeId } = req.params;
     const getSingleEmployee = await pool.query(queries.getEmployeeById, [
@@ -34,7 +34,7 @@ router.get("/employees/:employeeId", authorise, async (req, res) => {
 });
 
 // Edit employee
-router.put("/employees/:employeeId", authorise, async (req, res) => {
+router.put("/employees/:employeeId", authorize, async (req, res) => {
   try {
     const { employeeId } = req.params;
     const {
@@ -88,7 +88,7 @@ router.put("/employees/:employeeId", authorise, async (req, res) => {
 
 // Departments
 // Create Department
-router.post("/departments", authorise, async (req, res) => {
+router.post("/departments", authorize, async (req, res) => {
   try {
     const { department_name, department_status } = req.body;
 
@@ -103,7 +103,7 @@ router.post("/departments", authorise, async (req, res) => {
 });
 
 // View department
-router.get("/departments", authorise, async (req, res) => {
+router.get("/departments", authorize, async (req, res) => {
   try {
     const getDepartments = await pool.query(queries.getDepartments);
     res.json(getDepartments.rows);
@@ -113,7 +113,7 @@ router.get("/departments", authorise, async (req, res) => {
 });
 
 // Get single department
-router.get("/departments/:departmentId", authorise, async (req, res) => {
+router.get("/departments/:departmentId", authorize, async (req, res) => {
   try {
     const { departmentId } = req.params;
     const getSingleDep = await pool.query(queries.getDepartmentById, [
@@ -126,7 +126,7 @@ router.get("/departments/:departmentId", authorise, async (req, res) => {
 });
 
 // Edit department
-router.put("/departments/:departmentId", authorise, async (req, res) => {
+router.put("/departments/:departmentId", authorize, async (req, res) => {
   try {
     const { departmentId } = req.params;
     const { department_name, department_status } = req.body;

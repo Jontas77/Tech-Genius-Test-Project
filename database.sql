@@ -29,7 +29,6 @@ CREATE TABLE admin (
 CREATE TABLE departments (
     department_id       SERIAL PRIMARY KEY,
     employee_id         uuid REFERENCES employees(employee_id),
-    manager_id          INT REFERENCES managers(manager_id),
     admin_id            uuid REFERENCES admin(admin_id),
     department_name     VARCHAR(255),
     department_status   VARCHAR(255)   
