@@ -47,7 +47,7 @@ const createEmployee = async (req, res) => {
   }
 };
 
-const loginEmployee = async (req, res) => {
+const loginUser = async (req, res) => {
   try {
     const { employee_email, employee_password } = req.body;
 
@@ -76,7 +76,7 @@ const loginEmployee = async (req, res) => {
   }
 };
 
-const verifyEmployee = async (req, res) => {
+const verifyUser = async (req, res) => {
   try {
     res.json(true);
   } catch (error) {
@@ -85,7 +85,7 @@ const verifyEmployee = async (req, res) => {
   }
 };
 
-const getEmployeeDashboard = async (req, res) => {
+const getDashboard = async (req, res) => {
   try {
     const employee = await pool.query(queries.getEmployeeById, [req.user]);
 
@@ -98,7 +98,7 @@ const getEmployeeDashboard = async (req, res) => {
 
 module.exports = {
   createEmployee,
-  loginEmployee,
-  verifyEmployee,
-  getEmployeeDashboard,
+  loginUser,
+  verifyUser,
+  getDashboard,
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { AiOutlineMenu, AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
-import { GrProjects, GrAchievement } from "react-icons/gr";
+import { AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
+import { GrProjects } from "react-icons/gr";
 import {
   Menu,
   MenuItem,
@@ -10,7 +10,7 @@ import {
 } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 
-const SideNav = ({ name, setPage, setProject }) => {
+const ManagerSideNav = ({ setPage }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   // added styles
@@ -27,9 +27,7 @@ const SideNav = ({ name, setPage, setProject }) => {
     setCollapsed(!collapsed);
   };
 
-  const handleClick = () => {
-    setProject(true);
-  };
+  const handleClick = () => {};
 
   return (
     <ProSidebar style={styles.sideBarHeight} collapsed={collapsed}>
@@ -40,27 +38,22 @@ const SideNav = ({ name, setPage, setProject }) => {
       </SidebarHeader>
       <Menu iconShape="square">
         <MenuItem icon={<AiOutlineUser />} onClick={() => setPage("")}>
-          {name}
+          Dashboard
         </MenuItem>
-        <MenuItem
-          icon={<AiOutlineUserAdd />}
-          onClick={() => setPage("profile")}
-        >
-          Profile
-        </MenuItem>
-        <SubMenu title="Projects" icon={<GrProjects />}>
-          <MenuItem onClick={() => setPage("projects")}>View Projects</MenuItem>
-          <MenuItem onClick={handleClick}>Add Project</MenuItem>
-          <MenuItem>Download Template</MenuItem>
+
+        <SubMenu title="Employees" icon={<GrProjects />}>
+          <MenuItem onClick={() => setPage("employees")}>
+            View Employees
+          </MenuItem>
+          <MenuItem onClick={handleClick}>Edit Details</MenuItem>
         </SubMenu>
-        <MenuItem
-          icon={<GrAchievement />}
-          onClick={() => setPage("competitions")}
-        >
-          Competitions
-        </MenuItem>
+        <SubMenu title="Departments" icon={<GrProjects />}>
+          <MenuItem onClick={() => setPage("departments")}>
+            View Departments
+          </MenuItem>
+        </SubMenu>
       </Menu>
     </ProSidebar>
   );
 };
-export default SideNav;
+export default ManagerSideNav;

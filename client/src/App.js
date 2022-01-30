@@ -11,13 +11,11 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 
 // Log in
-import EmployeeLogin from "./pages/login/EmployeeLogin";
-import ManagerLogin from "./pages/login/ManagerLogin";
+import UserLogin from "./pages/login/UserLogin";
 import AdminLogin from "./pages/login/AdminLogin";
 
 // Dashboards
-import EmployeeDashboard from "./pages/dashboards/EmployeeDashboard";
-import ManagerDashboard from "./pages/dashboards/ManagerDashboard";
+import Dashboard from "./pages/dashboards/Dashboard";
 import AdminDashboard from "./pages/dashboards/AdminDashboard";
 
 toast.configure();
@@ -48,26 +46,16 @@ const App = () => {
             />
             <Route
               exact
-              path="/manager/login"
+              path="/user/login"
               render={(props) =>
                 !isAuthenticated ? (
-                  <ManagerLogin {...props} setAuth={setAuth} />
+                  <UserLogin {...props} setAuth={setAuth} />
                 ) : (
-                  <Redirect to="/manager/dashboard" />
+                  <Redirect to="/dashboard" />
                 )
               }
             />
-            <Route
-              exact
-              path="/employee/login"
-              render={(props) =>
-                !isAuthenticated ? (
-                  <EmployeeLogin {...props} setAuth={setAuth} />
-                ) : (
-                  <Redirect to="/employee/dashboard" />
-                )
-              }
-            />
+
             <Route
               exact
               path="/admin/dashboard"
@@ -81,23 +69,12 @@ const App = () => {
             />
             <Route
               exact
-              path="/manager/dashboard"
+              path="/dashboard"
               render={(props) =>
                 isAuthenticated ? (
-                  <ManagerDashboard {...props} setAuth={setAuth} />
+                  <Dashboard {...props} setAuth={setAuth} />
                 ) : (
-                  <Redirect to="/manager/login" />
-                )
-              }
-            />
-            <Route
-              exact
-              path="/employee/dashboard"
-              render={(props) =>
-                isAuthenticated ? (
-                  <EmployeeDashboard {...props} setAuth={setAuth} />
-                ) : (
-                  <Redirect to="/employee/login" />
+                  <Redirect to="/login" />
                 )
               }
             />

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const adminAuth = require("./routes/adminAuth");
-const employeeAuth = require("./routes/employeeAuth");
+const employeeAuth = require("./routes/userAuth");
 const managerAuth = require("./routes/managerAuth");
 const validate = require("./jwt/validate");
 const authorize = require("./jwt/authorize");
@@ -13,9 +13,9 @@ router.get("/admin/dashboard", authorize, adminAuth.getAdminDashboard);
 
 // Employee
 router.post("/employee/create", validate, employeeAuth.createEmployee);
-router.post("/employee/login", validate, employeeAuth.loginEmployee);
-router.get("/employee/is-verify", authorize, employeeAuth.verifyEmployee);
-router.get("/employee/dashboard", authorize, employeeAuth.getEmployeeDashboard);
+router.post("/user/login", validate, employeeAuth.loginUser);
+router.get("/employee/is-verify", authorize, employeeAuth.verifyUser);
+router.get("/dashboard", authorize, employeeAuth.getDashboard);
 
 // Manager
 

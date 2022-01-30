@@ -4,7 +4,7 @@ const controller = require("./apiController");
 
 // Admin
 // Employees
-router.get("/admin/employees", authorize, controller.getEmployees);
+router.get("/employees", authorize, controller.getEmployees);
 router.get(
   "/admin/employees/:employeeId",
   authorize,

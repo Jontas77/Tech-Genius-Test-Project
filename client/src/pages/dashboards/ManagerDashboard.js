@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import HeaderDashboard from "./components/HeaderDashboard";
-import SideNav from "./components/SideNav";
+import ManagerSideNav from "./components/ManagerSideNav";
+import EmpPerDepot from "./components/EmpPerDepot";
+import DepotPerManager from "./components/DepotPerManager";
 import { Col, Row } from "reactstrap";
 
 const ManagerDashboard = ({ setAuth }) => {
@@ -24,29 +26,27 @@ const ManagerDashboard = ({ setAuth }) => {
         </Col>
       </Row>
       <div style={styles.contentDiv}>
-        <SideNav setPage={setPage} />
+        <ManagerSideNav setPage={setPage} />
         <div style={styles.contentMargin}>
-          {/* {page === "profile" ? (
-						<Profile setPage={setPage} />
-					) : page === "projects" ? (
-						<Projects setPage={setPage} project={project} />
-					) : page === "competitions" ? (
-						<Competitions setPage={setPage} />
-					) : ( */}
-          <>
-            <h1>Welcome Manager</h1>
-            <table className="table table-hover mt-5">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Project Title</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-            </table>
-          </>
-          {/* )} */}
+          {page === "employees" ? (
+            <EmpPerDepot setPage={setPage} />
+          ) : page === "departments" ? (
+            <DepotPerManager setPage={setPage} />
+          ) : (
+            <>
+              <h1>Welcome Manager</h1>
+              <table className="table table-hover mt-5">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Project Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+              </table>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -33,18 +33,12 @@ const Menu = (props) => {
       </div>
       <div
         className={setClassNames(1)}
-        onClick={() => pushToRoute("/employee/login")}
+        onClick={() => pushToRoute("/user/login")}
       >
-        Employee
+        User
       </div>
       <div
         className={setClassNames(2)}
-        onClick={() => pushToRoute("/manager/login")}
-      >
-        Manager
-      </div>
-      <div
-        className={setClassNames(3)}
         onClick={() => pushToRoute("/admin/login")}
       >
         Admin

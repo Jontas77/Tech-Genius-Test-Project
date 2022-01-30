@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import HeaderDashboard from "./components/HeaderDashboard";
-import SideNav from "./components/SideNav";
+import AdminSideNav from "./components/AdminSideNav";
+import Employees from "./components/Employees";
+import CreateEmployee from "./components/CreateEmployee";
+import EditEmployee from "./components/EditEmployee";
+import Departments from "./components/Departments";
+import CreateDepartment from "./components/CreateDepartment";
+import EditDepartment from "./components/EditDepartment";
 import { Col, Row } from "reactstrap";
 
 const AdminDashboard = ({ setAuth }) => {
@@ -24,29 +30,25 @@ const AdminDashboard = ({ setAuth }) => {
         </Col>
       </Row>
       <div style={styles.contentDiv}>
-        <SideNav setPage={setPage} />
+        <AdminSideNav setPage={setPage} />
         <div style={styles.contentMargin}>
-          {/* {page === "profile" ? (
-						<Profile setPage={setPage} />
-					) : page === "projects" ? (
-						<Projects setPage={setPage} project={project} />
-					) : page === "competitions" ? (
-						<Competitions setPage={setPage} />
-					) : ( */}
-          <>
-            <h1>Welcome Admin</h1>
-            <table className="table table-hover mt-5">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Project Title</th>
-                  <th scope="col">Description</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-            </table>
-          </>
-          {/* )} */}
+          {page === "employees" ? (
+            <Employees setPage={setPage} />
+          ) : page === "createEmployee" ? (
+            <CreateEmployee setPage={setPage} />
+          ) : page === "editEmployee" ? (
+            <EditEmployee setPage={setPage} />
+          ) : page === "departments" ? (
+            <Departments setPage={setPage} />
+          ) : page === "createDepartment" ? (
+            <CreateDepartment setPage={setPage} />
+          ) : page === "editDepartment" ? (
+            <EditDepartment setPage={setPage} />
+          ) : (
+            <>
+              <h2>Welcome Admin</h2>
+            </>
+          )}
         </div>
       </div>
     </>
